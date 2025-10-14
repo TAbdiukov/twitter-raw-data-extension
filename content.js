@@ -4,8 +4,6 @@ let pathSegments = currentPath.split('/').filter(segment => segment);
 
 // List of non-user paths (first segment)
 const nonUserPaths = ['home', 'explore', 'notifications', 'messages', 'i', 'settings', 'logout', 'search', 'hashtag'];
-// Allowed tabs under user profiles
-const allowedTabs = ['with_replies', 'media', 'likes', 'lists', 'topics'];
 
 // Function to initialize the panel
 function initPanel() {
@@ -13,11 +11,21 @@ function initPanel() {
   const oldPanel = document.getElementById('raw-data-panel');
   if (oldPanel) oldPanel.remove();
 
-  if (
+  // Check if we're on a user-related page (profile, tweet, media tab, etc.)
+  const isUserPage = (
     pathSegments.length > 0 &&
     !nonUserPaths.includes(pathSegments[0]) &&
-    (pathSegments.length === 1 || (pathSegments.length === 2 && allowedTabs.includes(pathSegments[1])))
-  ) {
+    // Either:
+    // 1. Just the username (profile page)
+    // 2. Username + tab (media, likes, etc.)
+    // 3. Username + status + tweet ID (tweet page)
+    // 4. Username + status + tweet ID + photo (photo in tweet)
+    (pathSegments.length === 1 ||
+     pathSegments.length === 2 ||
+     (pathSegments.length >= 3 && pathSegments[1] === 'status'))
+  );
+
+  if (isUserPage) {
     const isDarkMode = true;
 
     const bgColor = isDarkMode ? '#15202b' : 'white';
@@ -29,7 +37,7 @@ function initPanel() {
     const closeColor = isDarkMode ? '#8899a6' : '#657786';
 
     const username = pathSegments[0];
-    
+
     const panelHTML = `
     <div id="raw-data-panel" style="position:fixed;top:10px;right:10px;z-index:10000;font-family:'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
       <style>
@@ -67,7 +75,7 @@ function initPanel() {
           <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">Raw User Data</h3>
           <button id="close-btn" style="background:none; border:none; cursor:pointer; color:${closeColor}; font-size:1.25rem; padding:0;">✖</button>
         </div>
-        
+
         <div style="margin-bottom:12px; display:flex; align-items:center;">
           <span style="color:${textColor};">Profile:</span>
           <strong style="color:${textColor}; margin-left:8px;">@${username}</strong>
@@ -256,8 +264,8 @@ const observer = new MutationObserver(() => {
   }
 });
 
-observer.observe(document.body, { 
-  childList: true, 
+observer.observe(document.body, {
+  childList: true,
   subtree: true,
   attributes: true,
   characterData: true
