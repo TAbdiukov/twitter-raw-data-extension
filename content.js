@@ -2,7 +2,16 @@
 const path = window.location.pathname;
 const pathSegments = path.split('/').filter(segment => segment);
 
-if (pathSegments.length === 1) {
+// List of non-user paths (first segment)
+const nonUserPaths = ['home', 'explore', 'notifications', 'messages', 'i', 'settings', 'logout', 'search', 'hashtag'];
+// Allowed tabs under user profiles
+const allowedTabs = ['with_replies', 'media', 'likes', 'lists', 'topics'];
+
+if (
+  pathSegments.length > 0 &&
+  !nonUserPaths.includes(pathSegments[0]) &&
+  (pathSegments.length === 1 || (pathSegments.length === 2 && allowedTabs.includes(pathSegments[1])))
+) {
   // Detect dark mode (Twitter is always dark now)
   const isDarkMode = true;
 
@@ -15,16 +24,24 @@ if (pathSegments.length === 1) {
   const buttonHoverColor = isDarkMode ? '#1a91da' : '#1a91da';
   const closeColor = isDarkMode ? '#8899a6' : '#657786';
 
-  // Inject panel UI
+  // Inject panel UI with syntax highlighting styles
   const panelHTML = `
   <div id="raw-data-panel" style="position:fixed;top:10px;right:10px;z-index:10000;font-family:'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <style>
+      .json-key { color: ${isDarkMode ? '#9cdcfe' : '#001080'}; }
+      .json-string { color: ${isDarkMode ? '#d7ba7d' : '#a31515'}; }
+      .json-boolean-true { color: ${isDarkMode ? '#6a9955' : '#098658'}; }
+      .json-boolean-false { color: ${isDarkMode ? '#ce9178' : '#a31515'}; }
+	  .json-null { color: ${isDarkMode ? '#b267e6' : '#660099'}; }
+      .json-number { color: ${isDarkMode ? '#b5cea8' : '#2b91af'}; }
+    </style>
     <div style="background:${bgColor}; border:1px solid ${borderColor}; padding:15px; width:400px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
         <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">Raw User Data</h3>
         <button id="close-btn" style="background:none; border:none; cursor:pointer; color:${closeColor}; font-size:1.25rem; padding:0;">✖</button>
       </div>
 
-      <div id="data-content" style="max-height:400px; overflow:auto; font-family:monospace; background:${inputBgColor}; border-radius:8px; padding:12px; margin-bottom:15px; color:${textColor}; font-size:0.875rem;"></div>
+      <div id="data-content" style="max-height:400px; overflow:auto; font-family:monospace; background:${inputBgColor}; border-radius:8px; padding:12px; margin-bottom:15px; color:${textColor}; font-size:0.875rem; white-space: pre;"></div>
 
       <button id="fetch-btn" style="margin-top:0; padding:0 16px; height:36px; width:100%; background-color:${buttonColor}; color:white; border:none; border-radius:9999px; font-weight:700; cursor:pointer; transition:background-color 0.2s;">
         Fetch Data
@@ -35,12 +52,13 @@ if (pathSegments.length === 1) {
 
   document.body.insertAdjacentHTML('beforeend', panelHTML);
 
-  // Add functionality
   const dataContent = document.getElementById('data-content');
+  dataContent.setAttribute('tabindex', '0');
+
   const fetchBtn = document.getElementById('fetch-btn');
   const closeBtn = document.getElementById('close-btn');
 
-  // Add button hover effect
+  // button hover effect
   fetchBtn.addEventListener('mouseenter', () => {
     fetchBtn.style.backgroundColor = buttonHoverColor;
   });
@@ -49,13 +67,52 @@ if (pathSegments.length === 1) {
     fetchBtn.style.backgroundColor = buttonColor;
   });
 
+  dataContent.addEventListener('keydown', e => {
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    const isSelectAll = (isMac && e.metaKey && e.key === 'a') ||
+                        (!isMac && e.ctrlKey && e.key === 'a');
+    if (isSelectAll) {
+      e.preventDefault();
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      const range = document.createRange();
+      range.selectNodeContents(dataContent);
+      sel.addRange(range);
+    }
+  });
+
   const getUsername = () => {
-    return window.location.pathname.split('/')[1].replace('@', '');
+    return pathSegments[0];
+  };
+
+  // Syntax highlighting function
+  const syntaxHighlight = (json) => {
+    if (!json) return 'null';
+
+    const jsonString = typeof json !== 'string'
+      ? JSON.stringify(json, null, 1)
+      : json;
+
+    return jsonString
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?)/g, (match) => {
+        let cls = 'json-number';
+        if (/:$/.test(match)) {
+          return `<span class="json-key">${match}</span>`;
+        }
+        return `<span class="json-string">${match}</span>`;
+      })
+      .replace(/\b(true)\b/g, '<span class="json-boolean-true">$1</span>')
+      .replace(/\b(false)\b/g, '<span class="json-boolean-false">$1</span>')
+      .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
+      .replace(/\b([0-9]+(\.[0-9]*)?(e[+-]?[0-9]*)?)\b/g, '<span class="json-number">$1</span>');
   };
 
   const displayData = (data) => {
     try {
-      dataContent.textContent = JSON.stringify(data, null, 2);
+      dataContent.innerHTML = syntaxHighlight(data);
     } catch (e) {
       dataContent.textContent = "Error formatting data";
     }
