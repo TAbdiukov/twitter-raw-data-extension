@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Raw Data Inspector",
+  "version": "1.0",
+  "description": "Displays raw Twitter user data on profile pages",
+  "permissions": ["cookies", "scripting", "activeTab"],
+  "host_permissions": ["*://*.twitter.com/*", "*://*.x.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.html", "panel.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "/assets/icons/icon16.png",
+      "48": "/assets/icons/icon48.png"
+    }
+  },
+  "icons": {
+    "16": "/assets/icons/icon16.png",
+    "48": "/assets/icons/icon48.png",
+    "128": "/assets/icons/icon128.png"
+  }
+}
