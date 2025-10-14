@@ -95,13 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const apiResponse = await fetch(`${url}?${params}`, {
             headers: {
               'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
-              'X-Csrf-Token': apiResponse.ct0,
-              'Cookie': `auth_token=${bgResponse.authToken}; ct0=${apiResponse.ct0}`
+              'X-Csrf-Token': bgResponse.ct0,
+              'Cookie': `auth_token=${bgResponse.authToken}; ct0=${bgResponse.ct0}`
             }
           });
 
           const data = await apiResponse.json();
           const userResult = data?.data?.user?.result;
+
+          if (!apiResponse.ok) {
+            throw new Error(`HTTP error ${apiResponse.status}`);
+          }
 
           if (!userResult) {
             throw new Error("User data not found");
