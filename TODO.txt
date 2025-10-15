@@ -1,0 +1,5 @@
+* Consistent name everywhere
+* Concise descriptive name
+* Icon in UI
+* Screenshots
+* Firefox port?
