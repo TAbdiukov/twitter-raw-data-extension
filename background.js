@@ -20,11 +20,11 @@ async function getTwitterCookies(username, sendResponse) {
 
     // Detailed error messages
     if (!ct0 && !authToken) {
-      sendResponse({ error: "Required cookies not found (ct0 and auth_token)" });
+      sendResponse({ error: "Required cookies not found (ct0 and auth_token). Are you logged in to X?" });
     } else if (!ct0) {
-      sendResponse({ error: "Required cookie not found: ct0" });
+      sendResponse({ error: "Required cookie not found: ct0 . Are you logged in to X?" });
     } else if (!authToken) {
-      sendResponse({ error: "Required cookie not found: auth_token" });
+      sendResponse({ error: "Required cookie not found: auth_token . Are you logged in to X?" });
     } else {
       sendResponse({ ct0, authToken, username });
     }
