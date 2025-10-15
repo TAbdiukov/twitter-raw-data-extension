@@ -106,16 +106,17 @@ function initPanel() {
     let lastJson = null;
 
     dataContent.addEventListener('keydown', e => {
-      const isMac = navigator.platform.toUpperCase().includes('MAC');
-      const isSelectAll = (isMac && e.metaKey && e.key === 'a') || (!isMac && e.ctrlKey && e.key === 'a');
-      if (isSelectAll) {
-        e.preventDefault();
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        const range = document.createRange();
-        range.selectNodeContents(dataContent);
-        sel.addRange(range);
-      }
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+    const isSelectAll = (isMac && e.metaKey && e.key === 'a') ||
+              (!isMac && e.ctrlKey && e.key === 'a');
+    if (isSelectAll) {
+      e.preventDefault();
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      const range = document.createRange();
+      range.selectNodeContents(dataContent);
+      sel.addRange(range);
+    }
     });
 
     const syntaxHighlight = (json) => {
@@ -126,15 +127,16 @@ function initPanel() {
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?)/g, (match) =>
-          /:$/.test(match)
-            ? `<span class="json-key">${match}</span>`
-            : `<span class="json-string">${match}</span>`
-        )
+        // Optimized regex for strings
+        .replace(/("(\\["\\\/bfnrt]|\\u[a-fA-F0-9]{4}|[^"\\])*")(\s*:)?/g, (match, p1, p2, p3) => {
+          if (p3) return `<span class="json-key">${p1}</span>:`;
+          return `<span class="json-string">${p1}</span>`;
+        })
         .replace(/\b(true)\b/g, '<span class="json-boolean-true">$1</span>')
         .replace(/\b(false)\b/g, '<span class="json-boolean-false">$1</span>')
         .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
-        .replace(/\b([0-9]+(\.[0-9]*)?(e[+-]?[0-9]*)?)\b/g, '<span class="json-number">$1</span>');
+        // Optimized regex for numbers
+        .replace(/\b-?\d+(\.\d+)?([eE][+-]?\d+)?\b/g, '<span class="json-number">$&</span>');
     };
 
     const displayData = (data) => {
