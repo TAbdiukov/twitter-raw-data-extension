@@ -9,12 +9,12 @@ async function getTwitterCookies(username, sendResponse) {
   try {
     // Try x.com domain first
     let cookies = await chrome.cookies.getAll({ domain: ".x.com" });
-    
+
     // If no cookies found, try twitter.com
     if (cookies.length === 0) {
       cookies = await chrome.cookies.getAll({ domain: ".twitter.com" });
     }
-    
+
     const ct0 = cookies.find(c => c.name === "ct0")?.value;
     const authToken = cookies.find(c => c.name === "auth_token")?.value;
 
