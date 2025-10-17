@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Raw Data Inspector",
+  "name": "X / Twitter Raw Data Inspector",
   "version": "1.0",
   "description": "Displays raw Twitter user data on profile pages",
   "permissions": ["cookies", "scripting", "activeTab"],

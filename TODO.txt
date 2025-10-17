@@ -1,4 +1,3 @@
-* Consistent name everywhere
-* Concise descriptive name
 * Screenshots
 * Firefox port?
+* Reduce scope in manifest

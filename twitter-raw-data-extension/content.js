@@ -82,7 +82,7 @@ function initPanel() {
             <img src="${chrome.runtime.getURL('/assets/icons/icon128.png')}" 
                  class="panel-logo" 
                  alt="Extension Logo">
-            <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">Raw User Data</h3>
+            <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">X / Twitter Raw Data Inspector</h3>
           </div>
           <button id="close-btn" style="background:none; border:none; cursor:pointer; color:${closeColor}; font-size:1.25rem; padding:0;">✖</button>
         </div>
