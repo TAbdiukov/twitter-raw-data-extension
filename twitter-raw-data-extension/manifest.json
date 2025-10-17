@@ -17,7 +17,11 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["panel.html", "panel.js"],
+	  "resources": [
+        "panel.html", 
+        "panel.js",
+        "/assets/icons/icon128.png"
+      ],
       "matches": ["<all_urls>"]
     }
   ],

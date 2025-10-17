@@ -69,13 +69,23 @@ function initPanel() {
           opacity: 0.5;
           cursor: not-allowed;
         }
+        .panel-logo {
+          width: 24px;
+          height: 24px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
       </style>
       <div style="background:${bgColor}; border:1px solid ${borderColor}; padding:15px; width:400px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-          <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">Raw User Data</h3>
+          <div style="display:flex; align-items:center;">
+            <img src="${chrome.runtime.getURL('/assets/icons/icon128.png')}" 
+                 class="panel-logo" 
+                 alt="Extension Logo">
+            <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:${textColor};">Raw User Data</h3>
+          </div>
           <button id="close-btn" style="background:none; border:none; cursor:pointer; color:${closeColor}; font-size:1.25rem; padding:0;">✖</button>
         </div>
-
         <div style="margin-bottom:12px; display:flex; align-items:center;">
           <span style="color:${textColor};">Profile:</span>
           <strong style="color:${textColor}; margin-left:8px;">@${username}</strong>
