@@ -17,10 +17,10 @@
   ],
   "web_accessible_resources": [
     {
-	  "resources": [
+      "resources": [
         "/assets/icons/icon128.png"
       ],
-	  "matches": [
+      "matches": [
         "https://twitter.com/*",
         "https://x.com/*"
       ]
