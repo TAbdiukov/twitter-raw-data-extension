@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "X / Twitter Raw Data Inspector",
   "version": "1.0",
-  "description": "Displays raw Twitter user data on profile pages",
+  "description": "Displays raw user data on X / Twitter profile pages",
   "permissions": ["cookies", "scripting", "activeTab"],
   "host_permissions": ["*://*.twitter.com/*", "*://*.x.com/*"],
   "background": {
