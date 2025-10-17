@@ -1,3 +1,2 @@
 * Screenshots
 * Firefox port?
-* Reduce scope in manifest
