@@ -6,18 +6,6 @@ Made by Tim Abdiukov
 
 ---
 
-## Features
-
-* ✅ Auto‑detects profile / tweet pages and injects the panel
-* ✅ One‑click **Fetch Data**
-* ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
-* ✅ **Copy JSON** button (with success/failure feedback)
-* ✅ SPA‑navigation aware (watches route changes and re‑inits when you move around X)
-* ✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
-
-
----
-
 ## Installation
 
 > 1.Go to chrome://extensions/  |  2.Enable Developer mode | 3.Click Load Unpacked | 4.Load Folder | 5.Enjoy!
@@ -29,6 +17,17 @@ Made by Tim Abdiukov
 3. Toggle **Developer mode** (top right).
 4. Click **Load unpacked** and select the project folder.
 5. Visit any X profile (e.g., `https://x.com/<username>`) and look for the panel in the top‑right corner.
+
+---
+
+## Features
+
+* ✅ Auto‑detects profile / tweet pages and injects the panel
+* ✅ One‑click **Fetch Data**
+* ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
+* ✅ **Copy JSON** button (with success/failure feedback)
+* ✅ SPA‑navigation aware (watches route changes and re‑inits when you move around X)
+* ✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
 
 ---
 
@@ -47,7 +46,7 @@ Made by Tim Abdiukov
 
 ---
 
-## What you get (example shape)
+## What you get (example)
 
 A typical response has this general form (trimmed for brevity):
 
@@ -70,18 +69,6 @@ A typical response has this general form (trimmed for brevity):
 ```
 
 The actual fields depend on what the site exposes and may change over time.
-
----
-
-## Project structure
-
-```
-twitter-raw-data-extension/
-├─ background.js      # Service worker: fulfills “getCookies” requests
-├─ content.js         # Injects the panel, builds & fires the GraphQL request, renders JSON
-├─ manifest.json      # MV3 manifest (permissions, content script, icons)
-└─ assets/icons/      # 16/48/128px icons (also exposed via web_accessible_resources)
-```
 
 ---
 
