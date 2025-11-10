@@ -3,8 +3,6 @@
 
 A tiny Chrome (ManifestV3) extension that overlays a panel on X / Twitter profile pages and shows the raw GraphQL user payload ("UserByScreenName"). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
 
-Made by Tim Abdiukov
-
 ---
 
 ## Installation
