@@ -28,11 +28,16 @@ Made by Tim Abdiukov
 ## Features
 
 ✅ Auto-detects profile / tweet pages and injects the panel
+
 ✅ One-click **Fetch Data**
+
 ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
+
 ✅ **Copy JSON** button (with success/failure feedback)
+
 ✅ SPA-navigation aware (watches route changes and re-inits when you move around X)
-✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
+
+✅ Basic keyboard support: focus the code area and press **Ctrl + A** to select all
 
 ---
 
