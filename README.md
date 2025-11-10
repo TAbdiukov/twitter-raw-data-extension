@@ -1,7 +1,7 @@
 
 # X / Twitter Raw Data Inspector
 
-A tiny Chrome (Manifest V3) extension that overlays a panel on X / Twitter profile pages and shows the raw GraphQL user payload ("UserByScreenName"). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
+A tiny Chrome (ManifestV3) extension that overlays a panel on X / Twitter profile pages and shows the raw GraphQL user payload ("UserByScreenName"). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
 
 Made by Tim Abdiukov
 
@@ -9,7 +9,11 @@ Made by Tim Abdiukov
 
 ## Installation
 
-> 1.Go to chrome://extensions/  |  2.Enable Developer mode | 3.Click Load Unpacked | 4.Load Folder | 5.Enjoy!
+1.Go to chrome://extensions/ 
+2.Enable Developer mode
+3.Click Load Unpacked
+4.Load Folder
+5.Enjoy!
 
 ### Longer version (first-timers)
 
@@ -23,12 +27,12 @@ Made by Tim Abdiukov
 
 ## Features
 
-* ✅ Auto-detects profile / tweet pages and injects the panel
-* ✅ One-click **Fetch Data**
-* ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
-* ✅ **Copy JSON** button (with success/failure feedback)
-* ✅ SPA-navigation aware (watches route changes and re-inits when you move around X)
-* ✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
+✅ Auto-detects profile / tweet pages and injects the panel
+✅ One-click **Fetch Data**
+✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
+✅ **Copy JSON** button (with success/failure feedback)
+✅ SPA-navigation aware (watches route changes and re-inits when you move around X)
+✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
 
 ---
 
