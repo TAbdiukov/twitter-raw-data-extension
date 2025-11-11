@@ -14,3 +14,5 @@ node_modules/
 /tmp/
 .DS_Store
 listdump.md
+*.zip
+*.crx
