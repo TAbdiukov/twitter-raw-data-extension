@@ -93,6 +93,5 @@ The actual fields depend on what the site exposes and may change over time.
 
 This project is unaffiliated with X / Twitter. Use responsibly and follow the platform’s Terms of Service.
 
----------------------------------
-
-Tim Abdiukov
+---
+**Tim Abdiukov**
