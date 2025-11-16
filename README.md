@@ -5,12 +5,25 @@
 ![License](https://img.shields.io/github/license/TAbdiukov/twitter-raw-data-extension)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/tabdiukov)
 
-![window](./.idea/window.png) | 
----- |
 
 A tiny Chrome (Manifest V3) extension that overlays a panel on X / Twitter profile pages and shows the **raw GraphQL user payload** (“UserByScreenName”). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
 
 Made by Tim Abdiukov
+
+---
+
+## Features
+
+![window](./.idea/window.png) | 
+---- |
+
+* ✅ Auto‑detects profile / tweet pages and injects the panel
+* ✅ One‑click **Fetch Data**
+* ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
+* ✅ **Copy JSON** button (with success/failure feedback)
+* ✅ SPA‑navigation aware (watches route changes and re‑inits when you move around X)
+* ✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
+
 
 ---
 
@@ -28,16 +41,6 @@ Just visit the extension's page in the Chrome Web Store or Firefox Add-ons and a
 4. Click **Load unpacked** and select the project folder.
 5. Visit any X profile (e.g., `https://x.com/<username>`) and look for the panel in the top‑right corner.
 
----
-
-## Features
-
-* ✅ Auto‑detects profile / tweet pages and injects the panel
-* ✅ One‑click **Fetch Data**
-* ✅ Inline **syntax highlighting** (strings, numbers, booleans, nulls, keys)
-* ✅ **Copy JSON** button (with success/failure feedback)
-* ✅ SPA‑navigation aware (watches route changes and re‑inits when you move around X)
-* ✅ Basic keyboard support: focus the code area and press **Cmd/Ctrl + A** to select all
 
 ---
 
