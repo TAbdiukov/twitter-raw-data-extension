@@ -5,6 +5,9 @@
 ![License](https://img.shields.io/github/license/TAbdiukov/twitter-raw-data-extension)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/tabdiukov)
 
+![window](./.idea/window.png) | 
+---- |
+
 A tiny Chrome (Manifest V3) extension that overlays a panel on X / Twitter profile pages and shows the **raw GraphQL user payload** (“UserByScreenName”). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
 
 Made by Tim Abdiukov
@@ -13,9 +16,11 @@ Made by Tim Abdiukov
 
 ## Installation
 
-> 1.Go to chrome://extensions/  |  2.Enable Developer mode | 3.Click Load Unpacked | 4.Load Folder | 5.Enjoy!
+The extension is now available through the official distribution channels for both Chrome and Firefox.
+For most users, installing from these official sources is the easiest and most reliable option.
+Just visit the extension’s page in the Chrome Web Store or Firefox Add-ons and add it to your browser.
 
-### Longer version (first‑timers)
+### Manual Installation (for development or local testing)
 
 1. Clone or download this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
