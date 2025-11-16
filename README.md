@@ -18,7 +18,7 @@ Made by Tim Abdiukov
 
 The extension is now available through the official distribution channels for both Chrome and Firefox.
 For most users, installing from these official sources is the easiest and most reliable option.
-Just visit the extension’s page in the Chrome Web Store or Firefox Add-ons and add it to your browser.
+Just visit the extension's page in the Chrome Web Store or Firefox Add-ons and add it to your browser.
 
 ### Manual Installation (for development or local testing)
 
