@@ -1,9 +1,8 @@
 # X / Twitter Raw Data Inspector
 
-[![GitHub](https://img.shields.io/badge/GitHub-TAbdiukov/twitter--raw--data--extension-black?logo=github)](https://github.com/TAbdiukov/twitter-raw-data-extension)
+[![GitHub](https://img.shields.io/badge/GitHub-black?logo=github)](https://github.com/TAbdiukov/twitter-raw-data-extension)
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-MV3-4285F4?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/ndihhakhboijbhmoilphcnbmbjdiinfa?utm_source=item-share-cb)
 [![Firefox Add-Ons](https://img.shields.io/badge/Firefox_Add_Ons-MV3-20123A?logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/x-twitter-raw-data-inspector/)
-
 ![License](https://img.shields.io/github/license/TAbdiukov/twitter-raw-data-extension)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/tabdiukov)
 
