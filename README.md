@@ -6,9 +6,9 @@
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/tabdiukov)
 
 
-A tiny Chrome (Manifest V3) extension that overlays a panel on X / Twitter profile pages and shows the **raw GraphQL user payload** (“UserByScreenName”). It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile. 
+Inspect raw X / Twitter profile data in one click ✨. This extension overlays a panel on profile pages and shows the raw GraphQL user payload. It’s handy for debugging, scraping pipelines, data audits, or just learning what the site’s API returns for a given profile.
 
-Made by Tim Abdiukov
+ℹ️ After you install the extension, log in to X as usual and open any profile.
 
 ---
 
