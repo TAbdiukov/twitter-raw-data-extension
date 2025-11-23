@@ -88,7 +88,7 @@ The actual fields depend on what the site exposes and may change over time.
 
 ## Security & privacy
 
-* Your **`auth_token`** and **`ct0`** are sensitive. This extension uses them only to authenticate a request **to X / Twitter**. They are not sent anywhere else by this code.
+* Cookies **`auth_token`** and **`ct0`** are sensitive. This extension uses them only to authenticate a request **to X / Twitter**. They are not sent anywhere else by this code.
 * Do **not** share captured JSON if it contains identifiers you consider private.
 * Audit the code yourself before use in sensitive environments. Use at your own risk and comply with the platform's terms and local laws.
 
