@@ -43,7 +43,7 @@
       "id": "@x-twitter-raw-data-inspector-abdiukov",
       "strict_min_version": "109.0",
       "data_collection_permissions": {
-        "required": ["none"]
+        "required": ["websiteContent"]
       }
     }
   }
